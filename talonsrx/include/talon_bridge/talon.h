@@ -9,6 +9,7 @@
 #include "talonsrx/SetPID.h"
 #include "talonsrx/FindCenter.h"
 
+#define MIN_SPEED	60
 #define TALON 	0x02040000
 #define CONTROL_3	0x00040080
 #define STATUS_01	0x00041400

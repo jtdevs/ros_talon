@@ -23,7 +23,7 @@ namespace talon
 	void TalonSRX::findCenterR()
 	{
 		if(_center){
-			_percent = -20;
+			_percent = -MIN_SPEED;
 		}
 		else{
 			_percent = 0;
@@ -37,7 +37,7 @@ namespace talon
 	void TalonSRX::findCenterL()
 	{
 		if(!_center){
-			_percent = 20;
+			_percent = MIN_SPEED;
 		}
 		else{
 			_percent = 0;
@@ -66,7 +66,7 @@ namespace talon
 	void TalonSRX::recoverCW()
 	{
 		if(_cwLimit){
-			_percent = -20;
+			_percent = -MIN_SPEED;
 		}
 		else{
 			_percent = 0;
@@ -79,7 +79,7 @@ namespace talon
 	void TalonSRX::recoverCCW()
 	{
 		if(_ccwLimit){
-			_percent = 20;
+			_percent = MIN_SPEED;
 		}
 		else{
 			_percent = 0;
