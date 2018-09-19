@@ -2,7 +2,7 @@
 
 namespace talon
 {
-	bool TalonSRX::setPID(talonsrx::SetPID::Request  &req, talonsrx::SetPID::Response &res)
+	bool TalonSRX::setPID(ros_talon::SetPID::Request  &req, ros_talon::SetPID::Response &res)
 	{
 		TalonSRX::setKP(req.kp);
 		TalonSRX::setKI(req.ki);

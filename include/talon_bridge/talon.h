@@ -5,9 +5,9 @@
 #include "can_msgs/Frame.h"
 #include "std_msgs/Int32.h"
 #include "std_msgs/Float32.h"
-#include "talonsrx/Status.h"
-#include "talonsrx/SetPID.h"
-#include "talonsrx/FindCenter.h"
+#include "ros_talon/Status.h"
+#include "ros_talon/SetPID.h"
+#include "ros_talon/FindCenter.h"
 
 #define MIN_SPEED	60
 #define TALON 	0x02040000
@@ -85,7 +85,7 @@ class TalonSRX
 		void unpackStatus4(const can_msgs::Frame &f);
 		void unpackStatus13(const can_msgs::Frame &f);
 		void publishStatus();
-		bool FindCenter(talonsrx::SetPID::Request  &req, talonsrx::SetPID::Response &res); //Service callback
+		bool FindCenter(ros_talon::SetPID::Request  &req, ros_talon::SetPID::Response &res); //Service callback
 		void findCenter(); //Actual function
 		void findCenterR();
 		void findCenterL();
@@ -96,7 +96,7 @@ class TalonSRX
 
 		void ClearStickyFaults();
 
-		bool setPID(talonsrx::SetPID::Request  &req, talonsrx::SetPID::Response &res);
+		bool setPID(ros_talon::SetPID::Request  &req, ros_talon::SetPID::Response &res);
 		void setKP(float value);
 		void setKI(float value);
 		void setKD(float value);

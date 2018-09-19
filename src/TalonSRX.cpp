@@ -7,11 +7,11 @@ namespace talon
 	TalonSRX::TalonSRX(ros::NodeHandle* nh)
     {
     	_CANSender = nh->advertise<can_msgs::Frame>("sent_messages", 10);
-    	_posPub = nh->advertise<std_msgs::Float32>("talonsrx/current_position", 10);
-    	_statusPub = nh->advertise<talonsrx::Status>("talonsrx/status",10);
+    	_posPub = nh->advertise<std_msgs::Float32>("ros_talon/current_position", 10);
+    	_statusPub = nh->advertise<ros_talon::Status>("ros_talon/status",10);
     	_CANReceiver = nh->subscribe("received_messages", 10, &TalonSRX::processCanFrame, this);
-    	_spid = nh->advertiseService("talonsrx/SetPID", &TalonSRX::setPID, this);
-    	_fcenter = nh->advertiseService("talonsrx/FindCenter", &TalonSRX::FindCenter, this);
+    	_spid = nh->advertiseService("ros_talon/SetPID", &TalonSRX::setPID, this);
+    	_fcenter = nh->advertiseService("ros_talon/FindCenter", &TalonSRX::FindCenter, this);
     	//prevent the talon from going idle
 		_talon_timer = nh->createTimer(ros::Duration(0.05), &TalonSRX::enableFrame, this);
       	_nh = nh;
@@ -208,7 +208,7 @@ namespace talon
 	}
 
 	void TalonSRX::publishStatus(){
-		talonsrx::Status s;
+		ros_talon::Status s;
 		s.header.stamp = ros::Time::now();
 		s.header.frame_id = "0";
 		s.Temperature = _statusTemp;

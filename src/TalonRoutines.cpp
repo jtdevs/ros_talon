@@ -2,7 +2,7 @@
 
 namespace talon
 {
-	bool TalonSRX::FindCenter(talonsrx::SetPID::Request  &req, talonsrx::SetPID::Response &res){
+	bool TalonSRX::FindCenter(ros_talon::SetPID::Request  &req, ros_talon::SetPID::Response &res){
 		TalonSRX::findCenter();
 		return true;
 	}
