@@ -69,7 +69,8 @@ class TalonSRX
 		ros::ServiceServer _spid;
 
 		void processCanFrame(const can_msgs::Frame &f);
-		void enableFrame(const ros::TimerEvent& event);
+		void TalonLoop(const ros::TimerEvent& event);
+		void enableFrame();
 
 		void percentOutput();
 		void setPercentVal(const std_msgs::Int32 &f);
@@ -108,8 +109,7 @@ class TalonSRX
 
 /*
 To-Do
-Patch the CAN interface with the auto-recovery service. Make sure to document this and mention
-the source.
+Patch the CAN interface with an auto-recovery service.
 */
 
 /*
