@@ -25,8 +25,8 @@ Both nodes will publish the ros_talon/current_position (std_msgs/Float32) and ro
 
 socketcan_bridge doesn't handle error, so communication completely breaks when an error occurs. This has been observed only when first running the node. socketcan_bridge will crash at least three times before becoming stable. Once it becomes stable no crash has been noted. This is an open issue on ros_canopen develpment. For more information see:
 
-https://github.com/ros-industrial/ros_canopen/issues/244#issue-248034107
-https://github.com/ros-industrial/ros_canopen/pull/249#issue-140646021
-https://github.com/ros-industrial/ros_canopen/issues/285#issue-328536939
+* https://github.com/ros-industrial/ros_canopen/issues/244#issue-248034107
+* https://github.com/ros-industrial/ros_canopen/pull/249#issue-140646021
+* https://github.com/ros-industrial/ros_canopen/issues/285#issue-328536939
 
 A simple workaround -far from ideal though- is to just start/kill the socketcan_bridge node until it becomes stable. To do so, run can_reset.sh, located under utils folder on this package.
