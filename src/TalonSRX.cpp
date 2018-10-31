@@ -109,6 +109,7 @@ namespace talon
 				TalonSRX::findCenter();
 				break;
 
+			//Not implemented yet
 			case modeMotionProfile:
 				_modeFunc = NULL;
 				break;
@@ -120,7 +121,7 @@ namespace talon
 	}
 
 	/*
-	"Main" loop of the packet.
+	"Main" loop.
 	*/
 	void TalonSRX::TalonLoop(const ros::TimerEvent& event)
 	{

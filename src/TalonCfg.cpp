@@ -11,6 +11,12 @@ namespace talon
 		return true;
 	}
 
+	/*
+	setKp, setKi, setKd and setKf functions are very similar. As their name suggests, they modify
+	the internal value for theses constants on the Talon device. These constants affect the internal
+	closed loop used to hold a position on servo mode. 
+	*/
+
 	void TalonSRX::setKP(float value){
 		int32_t rawbits = 0;
 		uint32_t urawbits;
@@ -117,6 +123,7 @@ namespace talon
 		_CANSender.publish(f);
 	}
 
+	// Configure the Talon to use a quadrature encoder as feedback device.
 	void TalonSRX::setFeedback2QuadEncoder()
 	{
 		can_msgs::Frame f;
@@ -132,6 +139,7 @@ namespace talon
 		_CANSender.publish(f);
 	}
 
+	// Set talon internal position value to zero. Used together with findCenter().
 	void TalonSRX::setZero()
 	{
 		can_msgs::Frame f;
@@ -147,6 +155,7 @@ namespace talon
 		_CANSender.publish(f);
 	}
 
+	// Clear any sticky fault from previous sessions. Sticky faults are persistant in memory.
 	void TalonSRX::ClearStickyFaults()
 	{
 		can_msgs::Frame f;

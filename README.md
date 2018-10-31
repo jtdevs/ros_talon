@@ -21,6 +21,24 @@ The package consists of two nodes: direct_drive and servo_pos. When direct_drive
 
 Both nodes will publish the ros_talon/current_position (std_msgs/Float32) and ros_talon/status (ros_talon/Status) topics. Both nodes will also provide two services: find_center and set_PID. find_center receives no input and provides no output. It finds the center using the signals from a mechanical encoder located in the motor output ring. The same mechanism is used to prevent the motor to go beyond +-450 degrees. The set_PID service receives three float32 inputs (Kp, Ki and Kd). These are the values used for the internal PID loop to keep the given position in Servo mode.
 
+## ArbID construction
+
+Analyzing the construction of the ArbID's used on CTRE's Phoenix library to be able to understand/port code from Phoenix, and also write some on my own, I've found the following:
+
+* Bits  0-5  correspond  to  the  device  number,  in  the  range  from  (int)0  to
+(int)62.  The device number (int)63 is reserved for general addressing on the ENABLE Frame.
+
+* Bits 6-16 correspond to a code that will identify what kind of data is being
+sent/received (STATUS_XX or similar on talon.h).
+
+* Bits 17-29 correspond to the device ID. This is equal to 2 for the TalonSRX device.
+
+* Bits 30-32 are wasted, as ArbID’s are only 29 bits long, but the nearest
+data type is 32 bits long (UInt32).
+
+* Don’t really know why, but the bit 19 is included by both, the device type
+id and the control/status id.  Also present on the ENABLE Frame.
+
 # Known issues
 
 socketcan_bridge doesn't handle error, so communication completely breaks when an error occurs. This has been observed only when first running the node. socketcan_bridge will crash at least three times before becoming stable. Once it becomes stable no crash has been noted. This is an open issue on ros_canopen develpment. For more information see:
