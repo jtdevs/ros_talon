@@ -316,9 +316,7 @@ namespace talon
 					unpackStatus13(f);
 					break;
 				case PARAM_SET:
-                    ROS_INFO("PARAM_SET received.\n \tdata[0] = %#02x.\n \tdata[1] = %#02x.\n \tdata[2] = %#02x.\n 
-                    	\tdata[3] = %#02x.\n\tdata[4] = %#02x.\n \tdata[5] = %#02x.\n \tdata[6] = %#02x.\n 
-                    	\tdata[7] = %#02x.\n",f.data[0],f.data[1],f.data[2],f.data[3],f.data[4],f.data[5],f.data[6],f.data[7]);
+                    ROS_INFO("PARAM_SET received.\n \t data[0] = %#02x.\n \t data[1] = %#02x.\n \t data[2] = %#02x.\n \t data[3] = %#02x.\n \t data[4] = %#02x.\n \t data[5] = %#02x.\n \t data[6] = %#02x.\n \t data[7] = %#02x.\n",f.data[0],f.data[1],f.data[2],f.data[3],f.data[4],f.data[5],f.data[6],f.data[7]);
                     break;
 
 				default:
